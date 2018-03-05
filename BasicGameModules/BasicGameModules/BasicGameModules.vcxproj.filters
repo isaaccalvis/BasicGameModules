@@ -1,17 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Core">
+      <UniqueIdentifier>{f334e528-70ab-4e47-9411-31a63ac37460}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    <Filter Include="Basic">
+      <UniqueIdentifier>{8ed05950-c2d1-4839-97a5-da49dabd3623}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Basic\GraphicModules">
+      <UniqueIdentifier>{aff23632-e2dd-4aa4-83d5-dc19c5058df9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Basic\SoundModules">
+      <UniqueIdentifier>{123747a9-51f2-4519-862a-14eb8ccb1cba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Basic\InputModules">
+      <UniqueIdentifier>{546ac828-dd98-4473-9f2a-577a07c70430}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Basic\Console">
+      <UniqueIdentifier>{d5dba21a-a22e-4197-9359-6ee90db62338}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Basic\Testing">
+      <UniqueIdentifier>{b2f13514-b977-41b3-afa4-d5b82ed9eaec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{18b76b55-8558-40cd-9fd5-3296687d37b6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleRender.h">
+      <Filter>Basic\GraphicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleTextures.h">
+      <Filter>Basic\GraphicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleWindow.h">
+      <Filter>Basic\GraphicModules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleInput.h">
+      <Filter>Basic\InputModules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleAudio.h">
+      <Filter>Basic\SoundModules</Filter>
+    </ClInclude>
+    <ClInclude Include="Defs.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="App.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleRender.cpp">
+      <Filter>Basic\GraphicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleTextures.cpp">
+      <Filter>Basic\GraphicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleWindow.cpp">
+      <Filter>Basic\GraphicModules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleInput.cpp">
+      <Filter>Basic\InputModules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleAudio.cpp">
+      <Filter>Basic\SoundModules</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
