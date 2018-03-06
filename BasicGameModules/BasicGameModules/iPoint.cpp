@@ -12,6 +12,12 @@ iPoint::iPoint(int nx, int ny)
 	y = ny;
 }
 
+bool iPoint::operator == (iPoint objComp) {
+	if (this->x == objComp.x && this->y == objComp.y)
+		return true;
+	return false;
+}
+
 fPoint::fPoint()
 {
 	x = 0.0f;

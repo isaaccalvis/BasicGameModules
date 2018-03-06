@@ -5,6 +5,8 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 
+#define CAMERA_SPEED 5
+
 #define VSYNC true
 
 ModuleRender::ModuleRender() : Module()
@@ -70,6 +72,20 @@ bool ModuleRender::PreUpdate()
 
 bool ModuleRender::Update(float dt)
 {
+
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT) {
+		camera.y += CAMERA_SPEED;
+	}
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT) {
+		camera.y -= CAMERA_SPEED;
+	}
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT) {
+		camera.x += CAMERA_SPEED;
+	}
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT) {
+		camera.x -= CAMERA_SPEED;
+	}
+
 	return true;
 }
 

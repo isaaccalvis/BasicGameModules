@@ -4,7 +4,6 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 
-#define PLAYER_SPEED 5	// distance in pixels
 
 // =============================================================================
 // =================================  PLAYER  ==================================

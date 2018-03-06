@@ -11,6 +11,7 @@ class ModuleRender;
 class ModuleTextures;
 class ModuleAudio;
 class ModulePlayer;
+class ModuleMap;
 
 class Application
 {
@@ -47,6 +48,7 @@ public:
 	ModuleTextures*					textures = nullptr;
 	ModuleAudio*					audio = nullptr;
 	ModulePlayer*					mPlayer = nullptr;
+	ModuleMap*						mMap = nullptr;
 
 public:
 

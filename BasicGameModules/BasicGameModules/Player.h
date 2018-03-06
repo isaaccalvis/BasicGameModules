@@ -6,6 +6,9 @@
 #include "Animation.h"
 #include "SDL_image\include\SDL_image.h"
 
+#define PLAYER_SPEED 5	// distance in pixels
+
+
 class player {
 public:
 	player(SDL_Texture* texture);
@@ -32,9 +35,9 @@ public:
 	bool Update(float dt);
 	bool PostUpdate();
 	bool CleanUp();
+	player* pj;
 
 private:
-	player* pj;
 	SDL_Texture * texturePlayer;
 };
 

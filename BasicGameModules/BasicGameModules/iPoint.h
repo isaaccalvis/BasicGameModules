@@ -6,6 +6,7 @@ public:
 	iPoint();
 	iPoint(int nx, int ny);
 
+	bool operator == (iPoint objComp);
 public:
 	int x;
 	int y;

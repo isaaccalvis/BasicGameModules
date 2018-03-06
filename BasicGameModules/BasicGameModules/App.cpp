@@ -10,6 +10,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "Player.h"
+#include "Map.h"
 
 Application::Application(int argc, char* args[]) : argc(argc), args(args)
 {
@@ -19,12 +20,14 @@ Application::Application(int argc, char* args[]) : argc(argc), args(args)
 	textures =	new ModuleTextures();
 	audio =		new ModuleAudio();
 	mPlayer = new ModulePlayer();
+	mMap = new ModuleMap();
 
 	AddModule(window);
 	AddModule(input);
 	AddModule(textures);
 	AddModule(audio);
 	AddModule(render);
+	AddModule(mMap);
 	AddModule(mPlayer);
 }
 
