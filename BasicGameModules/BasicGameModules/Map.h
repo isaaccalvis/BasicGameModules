@@ -43,7 +43,6 @@ public:
 	bool PostUpdate();
 	bool CleanUp();
 
-	void AddTile(Tile* tile);
 	bool ReturnConcretTileIfExist(Tile* tile);
 
 private:

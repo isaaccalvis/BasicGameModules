@@ -68,10 +68,6 @@ bool ModuleMap::CleanUp()
 	return true;
 }
 
-void ModuleMap::AddTile(Tile* tile) {
-	tileVector.push_back(tile);
-}
-
 bool ModuleMap::ReturnConcretTileIfExist(Tile* tile)
 {
 	for (int i = 0; i < tileVector.size(); i++) {
