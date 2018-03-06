@@ -10,6 +10,7 @@
 #include "Globals.h"
 #include "iPoint.h"
 #include "Defs.h"
+#include "Player.h"
 
 #define TILE_SIZE 64
 
@@ -39,7 +40,7 @@ public:
 	bool PostUpdate();
 	bool CleanUp();
 
-	bool CollidingWithATile(iPoint point);
+	bool CollidingWithATile(iPoint point, DIRECTION direction);
 	void ChargeMap();		
 
 private:

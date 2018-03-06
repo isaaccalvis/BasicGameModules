@@ -10,6 +10,13 @@
 #define PLAYER_SIZE 34
 #define PLAYER_Animation_SPEED 300
 
+enum DIRECTION {
+	UP,
+	DOWN,
+	RIGHT,
+	LEFT
+};
+
 class player {
 public:
 	player(SDL_Texture* texture);

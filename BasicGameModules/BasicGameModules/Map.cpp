@@ -68,12 +68,22 @@ bool ModuleMap::CleanUp()
 	return true;
 }
 
-bool ModuleMap::CollidingWithATile(iPoint point)
+bool ModuleMap::CollidingWithATile(iPoint point, DIRECTION direction)
 {
-	for (int i = 0; i < tileVector.size(); i++) {
-		if (!((tileVector[i]->coord.x * TILE_SIZE + TILE_SIZE < point.x || tileVector[i]->coord.x * TILE_SIZE > point.x)&&
-			(tileVector[i]->coord.y * TILE_SIZE + TILE_SIZE < point.y || tileVector[i]->coord.y * TILE_SIZE > point.y)))
-			return true;
+	switch (direction) {
+	case UP:
+		//for (int i = 0; i < tileVector.size(); i++) {
+		//}
+		break;
+	case DOWN:
+
+		break;
+	case RIGHT:
+
+		break;
+	case LEFT:
+
+		break;
 	}
 	return false;
 }
