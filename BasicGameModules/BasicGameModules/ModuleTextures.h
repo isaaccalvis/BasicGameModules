@@ -2,6 +2,7 @@
 #define __j1TEXTURES_H__
 
 #include "Module.h"
+#include "Globals.h"
 #include <vector>
 
 struct SDL_Texture;

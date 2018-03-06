@@ -33,8 +33,8 @@ bool ModuleWindow::Awake()
 		bool resizable = false;
 		bool fullscreen_window = false;
 
-		width = 640;
-		height = 480;
+		width = 1024;
+		height = 600;
 		scale = 1;
 
 		if(fullscreen == true)

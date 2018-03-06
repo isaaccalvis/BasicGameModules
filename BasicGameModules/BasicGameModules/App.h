@@ -10,6 +10,7 @@ class ModuleInput;
 class ModuleRender;
 class ModuleTextures;
 class ModuleAudio;
+class ModulePlayer;
 
 class Application
 {
@@ -45,6 +46,7 @@ public:
 	ModuleRender*					render = nullptr;
 	ModuleTextures*					textures = nullptr;
 	ModuleAudio*					audio = nullptr;
+	ModulePlayer*					mPlayer = nullptr;
 
 public:
 

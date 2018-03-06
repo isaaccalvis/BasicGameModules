@@ -9,6 +9,7 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
+#include "Player.h"
 
 Application::Application(int argc, char* args[]) : argc(argc), args(args)
 {
@@ -17,12 +18,14 @@ Application::Application(int argc, char* args[]) : argc(argc), args(args)
 	input =		new ModuleInput();
 	textures =	new ModuleTextures();
 	audio =		new ModuleAudio();
+	mPlayer = new ModulePlayer();
 
 	AddModule(window);
 	AddModule(input);
 	AddModule(textures);
 	AddModule(audio);
 	AddModule(render);
+	AddModule(mPlayer);
 }
 
 Application::~Application()
