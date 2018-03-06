@@ -28,13 +28,13 @@ bool ModuleRender::Awake()
 	// load flags
 	Uint32 flags = SDL_RENDERER_ACCELERATED;
 
-	if(config.child("vsync").attribute("value").as_bool(true) == true)
+	if(VSYNC)
 	{
 		flags |= SDL_RENDERER_PRESENTVSYNC;
 		LOG("Using vsync");
 	}
 
-	renderer = SDL_CreateRenderer(Application->win->window, -1, flags);
+	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
 
 	if(renderer == NULL)
 	{
@@ -43,8 +43,8 @@ bool ModuleRender::Awake()
 	}
 	else
 	{
-		camera.w = Application->win->screen_surface->w;
-		camera.h = Application->win->screen_surface->h;
+		camera.w = App->window->screen_surface->w;
+		camera.h = App->window->screen_surface->h;
 		camera.x = 0;
 		camera.y = 0;
 	}
@@ -84,23 +84,6 @@ bool ModuleRender::CleanUp()
 {
 	LOG("Destroying SDL render");
 	SDL_DestroyRenderer(renderer);
-	return true;
-}
-
-bool ModuleRender::Load(pugi::xml_node& data)
-{
-	cam.x = data.child("camera").attribute("x").as_int();
-	cam.y = data.child("camera").attribute("y").as_int();
-	return true;
-}
-
-bool ModuleRender::Save(pugi::xml_node& data) const
-{
-	pugi::xml_node c = data.append_child("camera");
-
-	c.append_attribute("x") = cam.x;
-	c.append_attribute("y") = cam.y;
-
 	return true;
 }
 

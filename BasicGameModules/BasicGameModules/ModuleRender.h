@@ -19,9 +19,6 @@ public:
 	bool PostUpdate();
 	bool CleanUp();
 
-	bool Load();
-	bool Save() const;
-
 	void SetViewPort(const SDL_Rect& rect);
 	void ResetViewPort();
 	iPoint ScreenToWorld(int x, int y) const;

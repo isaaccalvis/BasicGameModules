@@ -37,9 +37,9 @@ int main(int argc, char* args[])
 			case CREATE:
 			LOG("CREATION PHASE ===============================");
 
-			Application = new Application(argc, args);
+			App = new Application(argc, args);
 
-			if(Application != NULL)
+			if(App != NULL)
 				state = AWAKE;
 			else
 				state = FAIL;
@@ -48,7 +48,7 @@ int main(int argc, char* args[])
 
 			case AWAKE:
 			LOG("AWAKE PHASE ===============================");
-			if(Application->Awake() == true)
+			if(App->Awake() == true)
 				state = START;
 			else
 			{
@@ -60,7 +60,7 @@ int main(int argc, char* args[])
 			
 			case START:
 			LOG("START PHASE ===============================");
-			if(Application->Start() == true)
+			if(App->Start() == true)
 			{
 				state = LOOP;
 				LOG("UPDATE PHASE ===============================");
@@ -74,16 +74,16 @@ int main(int argc, char* args[])
 
 			case LOOP:
 			{
-				if (Application->Update() == false)
+				if (App->Update() == false)
 					state = CLEAN;
 			}
 			break;
 
 			case CLEAN:
 			LOG("CLEANUP PHASE ===============================");
-			if(Application->CleanUp() == true)
+			if(App->CleanUp() == true)
 			{
-				RELEASE(Application);
+				RELEASE(App);
 				result = EXIT_SUCCESS;
 				state = EXIT;
 			}

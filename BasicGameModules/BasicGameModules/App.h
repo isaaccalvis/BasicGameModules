@@ -40,11 +40,11 @@ private:
 
 public:
 
-	ModuleInputWindow*					window = nullptr;
-	ModuleInputInput*					input = nullptr;
-	ModuleInputRender*					render = nullptr;
-	ModuleInputTextures*				textures = nullptr;
-	ModuleInputAudio*					audio = nullptr;
+	ModuleWindow*					window = nullptr;
+	ModuleInput*					input = nullptr;
+	ModuleRender*					render = nullptr;
+	ModuleTextures*					textures = nullptr;
+	ModuleAudio*					audio = nullptr;
 
 public:
 
