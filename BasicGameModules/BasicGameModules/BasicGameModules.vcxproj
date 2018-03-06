@@ -120,6 +120,7 @@
     <ClInclude Include="Globals.h" />
     <ClInclude Include="iPoint.h" />
     <ClInclude Include="Log.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="Module.h" />
@@ -132,6 +133,7 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="iPoint.cpp" />
     <ClCompile Include="Log.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="Main.cpp" />
