@@ -3,6 +3,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
+#include "Map.h"
 
 
 // =============================================================================
@@ -11,15 +12,12 @@
 
 player::player(SDL_Texture* texture) {
 	this->texturePlayer = texture;
-	animationPlayer.generalSpeed = 500;
-	animationPlayer.AddFrame({0,0,40,40});
-	animationPlayer.AddFrame({ 40,0,40,40 });
-	animationPlayer.AddFrame({ 80,0,40,40 });
-	animationPlayer.AddFrame({ 120,0,40,40 });
-
+	animationPlayer.generalSpeed = PLAYER_SPEED;
+	animationPlayer.AddFrame({0,0,PLAYER_SIZE,PLAYER_SIZE });
 }
 
-void player::Update() {
+void player::Update()
+{
 	Move();
 }
 
@@ -33,16 +31,20 @@ void player::Finish() {}
 void player::Move()
 {
 	if (App->input->GetKey(SDL_SCANCODE_W) == KeyState::KEY_REPEAT) {
-		coord.y -= PLAYER_SPEED;
+		if (!App->mMap->CollidingWithATile(iPoint(this->coord.x, this->coord.y)))
+			coord.y -= PLAYER_SPEED;
 	}
 	if (App->input->GetKey(SDL_SCANCODE_S) == KeyState::KEY_REPEAT) {
-		coord.y += PLAYER_SPEED;
+		if (!App->mMap->CollidingWithATile(iPoint(this->coord.x, this->coord.y + PLAYER_SIZE)))
+			coord.y += PLAYER_SPEED;
 	}
 	if (App->input->GetKey(SDL_SCANCODE_A) == KeyState::KEY_REPEAT) {
-		coord.x -= PLAYER_SPEED;
+		if (!App->mMap->CollidingWithATile(iPoint(this->coord.x, this->coord.y + PLAYER_SIZE / 2)))
+			coord.x -= PLAYER_SPEED;
 	}
 	if (App->input->GetKey(SDL_SCANCODE_D) == KeyState::KEY_REPEAT) {
-		coord.x += PLAYER_SPEED;
+		if (!App->mMap->CollidingWithATile(iPoint(this->coord.x + PLAYER_SIZE, this->coord.y + PLAYER_SIZE / 2)))
+			coord.x += PLAYER_SPEED;
 	}
 }
 
@@ -63,7 +65,7 @@ bool ModulePlayer::Start()
 {
 	texturePlayer = App->textures->Load("Resources/protaSprite.png");
 	pj = new player(texturePlayer);
-	pj->coord = iPoint(0, 0);
+	pj->coord = iPoint(1 * TILE_SIZE + PLAYER_SIZE / 2 , 1 * TILE_SIZE + PLAYER_SIZE / 2);
 
 	return true;
 }

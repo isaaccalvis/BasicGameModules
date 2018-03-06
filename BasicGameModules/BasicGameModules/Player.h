@@ -6,8 +6,9 @@
 #include "Animation.h"
 #include "SDL_image\include\SDL_image.h"
 
-#define PLAYER_SPEED 5	// distance in pixels
-
+#define PLAYER_SPEED 2	// distance in pixels
+#define PLAYER_SIZE 34
+#define PLAYER_Animation_SPEED 300
 
 class player {
 public:

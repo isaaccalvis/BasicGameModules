@@ -31,6 +31,9 @@
     <Filter Include="Basic\Testing\Player">
       <UniqueIdentifier>{1f7db04f-c496-4f86-9120-9b8e010e2200}</UniqueIdentifier>
     </Filter>
+    <Filter Include="External Tools">
+      <UniqueIdentifier>{2c169b5d-b02b-4990-964d-ce864630a241}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h">
@@ -75,6 +78,12 @@
     <ClInclude Include="Map.h">
       <Filter>Basic\Testing\Map</Filter>
     </ClInclude>
+    <ClInclude Include="PugiXml\src\pugiconfig.hpp">
+      <Filter>External Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="PugiXml\src\pugixml.hpp">
+      <Filter>External Tools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp">
@@ -109,6 +118,9 @@
     </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Basic\Testing\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="PugiXml\src\pugixml.cpp">
+      <Filter>External Tools</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

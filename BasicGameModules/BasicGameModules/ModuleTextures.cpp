@@ -17,14 +17,12 @@ ModuleTextures::~ModuleTextures()
 
 bool ModuleTextures::Awake()
 {
-	LOG("Init Image library");
 	bool ret = true;
 	int flags = IMG_INIT_PNG;
 	int init = IMG_Init(flags);
 
 	if((init & flags) != flags)
 	{
-		LOG("Could not initialize Image lib. IMG_Init: %s", IMG_GetError());
 		ret = false;
 	}
 
@@ -33,15 +31,12 @@ bool ModuleTextures::Awake()
 
 bool ModuleTextures::Start()
 {
-	LOG("start textures");
 	bool ret = true;
 	return ret;
 }
 
 bool ModuleTextures::CleanUp()
 {
-	LOG("Freeing textures and Image library");
-
 	for(int i = 0; i < textures.size(); i++)
 	{
 		SDL_DestroyTexture(textures[i]);
