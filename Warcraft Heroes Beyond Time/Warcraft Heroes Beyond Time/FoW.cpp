@@ -1,9 +1,42 @@
 #include "FoW.h"
 #include "Application.h"
 #include "ModuleRender.h"
+
+#include "Console.h"
+#include "ModuleMapGenerator.h"
 //#include "ModulePrinter.h"
 
-#define FOW_TILE_SIZE 100
+#define ORIGINAL_TILE App->map->getTileSize()
+#define FOW_TILE_MULTIPLIER 2
+#define FOW_TILE ORIGINAL_TILE * FOW_TILE_MULTIPLIER
+
+class ConsoleFoWOrder : public ConsoleOrder
+{
+		std::string orderName()
+		{
+			return "fow";
+		}
+
+		void Exec(std::string parameter, int parameterNumeric)
+		{
+			if (parameter == "print")
+			{
+				if (parameterNumeric == 1)
+					App->fow->printFoW = true;
+				else
+					App->fow->printFoW = false;
+			}
+			else if (parameter == "load")
+			{
+				uint w, h;
+				App->map->getSize(w, h);
+				App->fow->loadFoWMap((int)w, (int)h);
+
+			}
+			else if (parameter == "unload")
+				App->fow->unloadFowMap();
+		}
+};
 
 FoW::FoW() : Module()
 {
@@ -15,7 +48,7 @@ FoW::~FoW()
 
 }
 
-bool FoW::Start()
+bool FoW::Awake()
 {
 
 	return true;
@@ -23,6 +56,14 @@ bool FoW::Start()
 
 bool FoW::Update(float dt)
 {
+
+	return true;
+}
+
+bool FoW::PostUpdate()
+{
+	if (printFoW)
+		print();
 	return true;
 }
 
@@ -32,22 +73,34 @@ bool FoW::CleanUp()
 	return true;
 }
 
+void FoW::AddCommands()
+{
+	ConsoleOrder* order = new ConsoleFoWOrder;
+	App->console->AddConsoleOrderToList(order);
+}
+
 void FoW::loadFoWMap(int mapWidth, int mapHeight)
 {
-	for (int x = 0; x * FOW_TILE_SIZE < mapWidth; x++)
-		for (int y = 0; y * FOW_TILE_SIZE < mapHeight; y++)
+	for (int x = 0; x < mapWidth / FOW_TILE_MULTIPLIER; x++)
+		for (int y = 0; y < mapHeight / FOW_TILE_MULTIPLIER; y++)
 		{
 			FoW_Tile* aux = new FoW_Tile;
 			aux->pos = iPoint(x, y);
-			fowTilesList.push_back(aux);
+			fowTilesVector.push_back(aux);
 		}
 }
 
-void FoW::printFoW()
+void FoW::unloadFowMap()
 {
-	std::list<FoW_Tile*>::iterator it = fowTilesList.begin();
-	for (; it != fowTilesList.end(); it++)
+	for (int i = 0; i < fowTilesVector.size(); i++)
+		delete fowTilesVector[i];
+	fowTilesVector.clear();
+}
+
+void FoW::print()
+{
+	for (int i = 0; i < fowTilesVector.size(); i++)
 	{
-		App->render->DrawQuad({ (*it)->pos.x * FOW_TILE_SIZE, (*it)->pos.y * FOW_TILE_SIZE, FOW_TILE_SIZE, FOW_TILE_SIZE },0,0,0, (*it)->alpha);
+		App->render->DrawQuad({ fowTilesVector[i]->pos.x * FOW_TILE, fowTilesVector[i]->pos.y * FOW_TILE, FOW_TILE, FOW_TILE }, 0, 0, 0, fowTilesVector[i]->alpha);
 	}
 }

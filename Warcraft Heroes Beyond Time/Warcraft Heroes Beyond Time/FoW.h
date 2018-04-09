@@ -3,7 +3,7 @@
 
 #include "Module.h"
 #include "p2Point.h"
-#include <list>
+#include <vector>
 
 struct FoW_Tile
 {
@@ -18,15 +18,19 @@ public:
 	FoW();
 	~FoW();
 
-	bool Start();
+	bool Awake();
 	bool Update(float dt);
+	bool PostUpdate();
 	bool CleanUp();
+	void AddCommands();
 
 	void loadFoWMap(int mapWidth, int mapHeight);
-	void printFoW();
+	void unloadFowMap();
+	void print();
 
 public:
-	std::list<FoW_Tile*> fowTilesList;
+	std::vector<FoW_Tile*> fowTilesVector;
+	bool printFoW = true;
 };
 
 #endif
