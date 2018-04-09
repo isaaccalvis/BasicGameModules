@@ -15,6 +15,8 @@ public:
 	virtual bool Update(float dt);
 	virtual bool PostUpdate();
 	virtual bool Finish();
+
+	int distanceToPlayer();
 	virtual bool Draw();
 
 	virtual void Collision(COLLIDER_TYPE type);
@@ -26,6 +28,8 @@ public:
 	int accountantPrincipal = -1;
 	bool destroy = false;
 	bool stop = false;
+
+	ENTITY_TYPE entityBasicType = ENTITY_TYPE::STATIC;
 };
 
 #endif

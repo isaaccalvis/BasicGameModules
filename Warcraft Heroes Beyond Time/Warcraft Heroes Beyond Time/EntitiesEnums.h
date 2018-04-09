@@ -1,6 +1,12 @@
 #ifndef __ENTITIESENUM_H__
 #define __ENTITIESENUM_H__
 
+enum ENTITY_TYPE
+{
+	STATIC = 0,
+	DINAMIC
+};
+
 enum SPRITESHEETS
 {
 	NON_TEXTURE = -1,

@@ -4,7 +4,9 @@
 #include "PlayerEntity.h"
 #include "Scene.h"
 
-EnemyEntity::EnemyEntity(fPoint coor, ENEMY_TYPE character, SDL_Texture* texture) : DynamicEntity(coor, texture), type(type) {}
+EnemyEntity::EnemyEntity(fPoint coor, ENEMY_TYPE character, SDL_Texture* texture) : DynamicEntity(coor, texture), type(type) {
+	entityBasicType = DINAMIC;
+}
 
 bool EnemyEntity::Start() { return true; }
 

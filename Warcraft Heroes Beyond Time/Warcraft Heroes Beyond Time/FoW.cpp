@@ -3,12 +3,10 @@
 #include "ModuleRender.h"
 
 #include "Console.h"
+#include "Scene.h"
+#include "PlayerEntity.h"
 #include "ModuleMapGenerator.h"
 //#include "ModulePrinter.h"
-
-#define ORIGINAL_TILE App->map->getTileSize()
-#define FOW_TILE_MULTIPLIER 2
-#define FOW_TILE ORIGINAL_TILE * FOW_TILE_MULTIPLIER
 
 class ConsoleFoWOrder : public ConsoleOrder
 {
@@ -31,7 +29,6 @@ class ConsoleFoWOrder : public ConsoleOrder
 				uint w, h;
 				App->map->getSize(w, h);
 				App->fow->loadFoWMap((int)w, (int)h);
-
 			}
 			else if (parameter == "unload")
 				App->fow->unloadFowMap();
@@ -56,7 +53,7 @@ bool FoW::Awake()
 
 bool FoW::Update(float dt)
 {
-
+	TilesNearPlayer(RADIUS);
 	return true;
 }
 
@@ -79,6 +76,14 @@ void FoW::AddCommands()
 	App->console->AddConsoleOrderToList(order);
 }
 
+void FoW::print()
+{
+	for (int i = 0; i < fowTilesVector.size(); i++)
+	{
+		App->render->DrawQuad({ fowTilesVector[i]->pos.x * FOW_TILE, fowTilesVector[i]->pos.y * FOW_TILE, FOW_TILE, FOW_TILE }, 0, 0, 0, fowTilesVector[i]->alpha);
+	}
+}
+
 void FoW::loadFoWMap(int mapWidth, int mapHeight)
 {
 	for (int x = 0; x < mapWidth / FOW_TILE_MULTIPLIER; x++)
@@ -97,10 +102,26 @@ void FoW::unloadFowMap()
 	fowTilesVector.clear();
 }
 
-void FoW::print()
+void FoW::TilesNearPlayer(int radius)
 {
 	for (int i = 0; i < fowTilesVector.size(); i++)
 	{
-		App->render->DrawQuad({ fowTilesVector[i]->pos.x * FOW_TILE, fowTilesVector[i]->pos.y * FOW_TILE, FOW_TILE, FOW_TILE }, 0, 0, 0, fowTilesVector[i]->alpha);
+		if (TotalDistanceToPlayer(i) < radius)
+		{
+			fowTilesVector[i]->alpha = 0;
+			fowTilesVector[i]->normalAlpha = TRANSLUCID_ALPHA;
+		}
+		else
+			fowTilesVector[i]->alpha = fowTilesVector[i]->normalAlpha;
 	}
+}
+int FoW::TotalDistanceToPlayer(int tile)
+{
+	int totalX = fowTilesVector[tile]->pos.x - (int)App->scene->player->pos.x / ORIGINAL_TILE;
+	if (totalX < 0)
+		totalX *= -1;
+	int totalY = fowTilesVector[tile]->pos.y - (int)App->scene->player->pos.y / ORIGINAL_TILE;
+	if (totalY < 0)
+		totalY *= -1;
+	return totalX + totalY;
 }

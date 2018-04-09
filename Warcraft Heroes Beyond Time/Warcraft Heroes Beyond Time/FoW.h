@@ -5,11 +5,21 @@
 #include "p2Point.h"
 #include <vector>
 
+// defines 1
+#define ORIGINAL_TILE App->map->getTileSize()
+#define FOW_TILE_MULTIPLIER 1
+#define FOW_TILE (ORIGINAL_TILE * FOW_TILE_MULTIPLIER)
+
+// defines 2
+#define RADIUS 5
+#define TRANSLUCID_ALPHA 125
+
 struct FoW_Tile
 {
 	iPoint pos;
 	int size = 0;
 	int alpha = 255;
+	int normalAlpha = 255;
 };
 
 class FoW : public Module
@@ -24,9 +34,21 @@ public:
 	bool CleanUp();
 	void AddCommands();
 
+	// Utilities
+	void print();
+
+	// Problem 1
 	void loadFoWMap(int mapWidth, int mapHeight);
 	void unloadFowMap();
-	void print();
+
+	// Problem 2
+	void TilesNearPlayer(int radius);
+
+	// Problem 3
+	int TotalDistanceToPlayer(int tile);
+
+	// Problem 4
+	// Not resolved here !! is an entity problem
 
 public:
 	std::vector<FoW_Tile*> fowTilesVector;
