@@ -117,7 +117,7 @@ void FoW::TilesNearPlayer(int radius)
 }
 int FoW::TotalDistanceToPlayer(int tile)
 {
-	int totalX = fowTilesVector[tile]->pos.x - (int)App->scene->player->pos.x / ORIGINAL_TILE;
+	int totalX = fowTilesVector[tile]->pos.x - ((int)App->scene->player->pos.x + 40) / ORIGINAL_TILE;
 	if (totalX < 0)
 		totalX *= -1;
 	int totalY = fowTilesVector[tile]->pos.y - (int)App->scene->player->pos.y / ORIGINAL_TILE;

@@ -49,6 +49,7 @@ public:
 
 	// Problem 4
 	// Not resolved here !! is an entity problem
+	// Entity.h & .cpp
 
 public:
 	std::vector<FoW_Tile*> fowTilesVector;
