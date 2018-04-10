@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "p2Point.h"
 #include <vector>
+#include <list>
 
 // defines 1
 #define ORIGINAL_TILE App->map->getTileSize()
@@ -11,8 +12,11 @@
 #define FOW_TILE (ORIGINAL_TILE * FOW_TILE_MULTIPLIER)
 
 // defines 2
-#define RADIUS 5
+#define RADIUS 4
 #define TRANSLUCID_ALPHA 125
+
+// defines ArtProblem
+#define TILE_PARTITIONS 3
 
 struct FoW_Tile
 {
@@ -50,6 +54,12 @@ public:
 	// Problem 4
 	// Not resolved here !! is an entity problem
 	// Entity.h & .cpp
+
+	// Art Problem
+	void ArtPartition();
+	int TotalDistanceToPlayerSmallers(std::list<FoW_Tile*>::iterator temp);
+	std::list<FoW_Tile*> temporalSmallerTiles;
+
 
 public:
 	std::vector<FoW_Tile*> fowTilesVector;

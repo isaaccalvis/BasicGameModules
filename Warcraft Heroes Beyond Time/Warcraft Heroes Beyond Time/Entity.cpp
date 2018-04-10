@@ -25,7 +25,7 @@ int Entity::distanceToPlayer()
 	int totalY = pos.y / ORIGINAL_TILE - (int)App->scene->player->pos.y / ORIGINAL_TILE;
 	if (totalY < 0)
 		totalY *= -1;
-	return totalX + totalY;
+	return sqrt(totalX*totalX + totalY*totalY);
 }
 
 bool Entity::Draw()
