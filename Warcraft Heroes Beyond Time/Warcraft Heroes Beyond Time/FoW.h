@@ -16,7 +16,7 @@
 #define TRANSLUCID_ALPHA 125
 
 // defines ArtProblem
-#define TILE_PARTITIONS 3
+#define TILE_PARTITIONS 4
 
 struct FoW_Tile
 {

@@ -150,7 +150,7 @@ void FoW::TilesNearPlayer(int radius)
 
 int FoW::TotalDistanceToPlayerSmallers(std::list<FoW_Tile*>::iterator temp)
 {
-	int totalX = (*temp)->pos.x + (FOW_TILE / TILE_PARTITIONS / 2) - ((int)App->scene->player->pos.x + 40);
+	int totalX = (*temp)->pos.x + (FOW_TILE / TILE_PARTITIONS / 2) - ((int)App->scene->player->pos.x + 50);
 	if (totalX < 0)
 		totalX *= -1;
 	int totalY = (*temp)->pos.y + (FOW_TILE / TILE_PARTITIONS / 2) - (int)App->scene->player->pos.y;

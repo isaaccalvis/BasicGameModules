@@ -37,25 +37,25 @@ bool PlayerHPBar::Draw()
 	//Blit back
 	bool ret = true;
 
-	if(ret)
-		ret = App->render->Blit(App->gui->getAtlas(), hpPos.x + localPos.x, hpPos.y + localPos.y, &SDL_Rect(BAR_BACK), 1, 0);
-	if(ret)
-		ret = App->render->Blit(App->gui->getAtlas(), energyPos.x + localPos.x, energyPos.y + localPos.y, &SDL_Rect(BAR_BACK), 1, 0);
+	//if(ret)
+	//	ret = App->render->Blit(App->gui->getAtlas(), hpPos.x + localPos.x, hpPos.y + localPos.y, &SDL_Rect(BAR_BACK), 1, 0);
+	//if(ret)
+	//	ret = App->render->Blit(App->gui->getAtlas(), energyPos.x + localPos.x, energyPos.y + localPos.y, &SDL_Rect(BAR_BACK), 1, 0);
 
-	//Blit HP
-	if (ret)
-		ret = App->render->Blit(App->gui->getAtlas(), hpPos.x + localPos.x, hpPos.y + localPos.y, &hp, 1, 0);
-	//Blit Energy
-	if (ret)
-		ret = App->render->Blit(App->gui->getAtlas(), energyPos.x + localPos.x, energyPos.y + localPos.y, &energy, 1, 0);
-	
-	//Blit Bar
-	if (ret)
-		ret = App->render->Blit(App->gui->getAtlas(), localPos.x, localPos.y, &SDL_Rect(BAR), 1, 0);
-	
-	//Blit Portrait
+	////Blit HP
+	//if (ret)
+	//	ret = App->render->Blit(App->gui->getAtlas(), hpPos.x + localPos.x, hpPos.y + localPos.y, &hp, 1, 0);
+	////Blit Energy
+	//if (ret)
+	//	ret = App->render->Blit(App->gui->getAtlas(), energyPos.x + localPos.x, energyPos.y + localPos.y, &energy, 1, 0);
+	//
+	////Blit Bar
+	//if (ret)
+	//	ret = App->render->Blit(App->gui->getAtlas(), localPos.x, localPos.y, &SDL_Rect(BAR), 1, 0);
+	//
+	////Blit Portrait
 
-	//Blit Consumable
+	////Blit Consumable
 
 
 	return ret;
