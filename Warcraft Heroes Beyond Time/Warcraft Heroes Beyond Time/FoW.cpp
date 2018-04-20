@@ -17,14 +17,7 @@ class ConsoleFoWOrder : public ConsoleOrder
 
 		void Exec(std::string parameter, int parameterNumeric)
 		{
-			if (parameter == "print")
-			{
-				if (parameterNumeric == 1)
-					App->fow->printFoW = true;
-				else
-					App->fow->printFoW = false;
-			}
-			else if (parameter == "load")
+			if (parameter == "load")
 			{
 				uint w, h;
 				App->map->getSize(w, h);
@@ -59,11 +52,8 @@ bool FoW::Update(float dt)
 
 bool FoW::PostUpdate()
 {
-	if (printFoW)
-	{
-		print();
-		ArtPartition();
-	}
+	print();
+	ArtPartition();
 	return true;
 }
 
@@ -89,6 +79,7 @@ void FoW::print()
 
 void FoW::loadFoWMap(int mapWidth, int mapHeight)
 {
+	// TODO 1: WE HAVE TO COVER THE MAP WITH FOW TILES
 	for (int x = 0; x < mapWidth / FOW_TILE_MULTIPLIER; x++)
 		for (int y = 0; y < mapHeight / FOW_TILE_MULTIPLIER; y++)
 		{
@@ -104,9 +95,9 @@ void FoW::unloadFowMap()
 		delete fowTilesVector[i];
 	fowTilesVector.clear();
 
-	for (int i = 0; i < temporalSmallerTiles.size(); i++)
-		delete temporalSmallerTiles[i];
-	temporalSmallerTiles.clear();
+	for (int i = 0; i < fowSmallerTilesVector.size(); i++)
+		delete fowSmallerTilesVector[i];
+	fowSmallerTilesVector.clear();
 }
 
 int FoW::TotalDistanceToPlayer(int tile)
@@ -126,23 +117,23 @@ void FoW::TilesNearPlayer(int radius)
 	for (int i = 0; i < fowTilesVector.size(); i++)
 	{
 		if (TotalDistanceToPlayer(i) == radius)
-		{	// ART PROBLEM !!
+		{
 			for (int x = 0; x < TILE_PARTITIONS; x++)
 				for (int j = 0; j < TILE_PARTITIONS; j++)
 				{
-					if (contador < temporalSmallerTiles.size())
-					{	// AIXO VOL DIR QUE JA ESXISTEIX
-						temporalSmallerTiles[contador]->pos.x = fowTilesVector[i]->pos.x * FOW_TILE + (x * FOW_TILE / TILE_PARTITIONS);
-						temporalSmallerTiles[contador]->pos.y = fowTilesVector[i]->pos.y * FOW_TILE + (j * FOW_TILE / TILE_PARTITIONS);
-						temporalSmallerTiles[contador]->normalAlpha = fowTilesVector[i]->normalAlpha;
+					if (contador < fowSmallerTilesVector.size())
+					{
+						fowSmallerTilesVector[contador]->pos.x = fowTilesVector[i]->pos.x * FOW_TILE + (x * FOW_TILE / TILE_PARTITIONS);
+						fowSmallerTilesVector[contador]->pos.y = fowTilesVector[i]->pos.y * FOW_TILE + (j * FOW_TILE / TILE_PARTITIONS);
+						fowSmallerTilesVector[contador]->normalAlpha = fowTilesVector[i]->normalAlpha;
 					}
 					else
 					{
-						FoW_Tile* aux = new FoW_Tile();	// AQUESTS TILES NO ESTAN EN COORDS LOCALS ! ESTAN EN GLOBALS !
+						FoW_Tile* aux = new FoW_Tile();
 						aux->pos.x = fowTilesVector[i]->pos.x * FOW_TILE + (x * FOW_TILE / TILE_PARTITIONS);
 						aux->pos.y = fowTilesVector[i]->pos.y * FOW_TILE + (j * FOW_TILE / TILE_PARTITIONS);
 						aux->normalAlpha = fowTilesVector[i]->normalAlpha;
-						temporalSmallerTiles.push_back(aux);
+						fowSmallerTilesVector.push_back(aux);
 					}
 					contador++;
 
@@ -173,16 +164,16 @@ int FoW::TotalDistanceToPlayerSmallers(iPoint pos)
 
 void FoW::ArtPartition()
 {
-	for (int i = 0; i < temporalSmallerTiles.size(); i++)
+	for (int i = 0; i < fowSmallerTilesVector.size(); i++)
 	{
-		if (TotalDistanceToPlayerSmallers(temporalSmallerTiles[i]->pos) < RADIUS * FOW_TILE)
-			temporalSmallerTiles[i]->alpha = 0;
+		if (TotalDistanceToPlayerSmallers(fowSmallerTilesVector[i]->pos) < RADIUS * FOW_TILE)
+			fowSmallerTilesVector[i]->alpha = 0;
 		else
-			temporalSmallerTiles[i]->alpha = temporalSmallerTiles[i]->normalAlpha;
+			fowSmallerTilesVector[i]->alpha = fowSmallerTilesVector[i]->normalAlpha;
 	}
 
-	for (int i = 0; i < temporalSmallerTiles.size(); i++)
+	for (int i = 0; i < fowSmallerTilesVector.size(); i++)
 	{
-		App->render->DrawQuad({ temporalSmallerTiles[i]->pos.x, temporalSmallerTiles[i]->pos.y, FOW_TILE / TILE_PARTITIONS, FOW_TILE / TILE_PARTITIONS }, 0, 0, 0, temporalSmallerTiles[i]->alpha);
+		App->render->DrawQuad({ fowSmallerTilesVector[i]->pos.x, fowSmallerTilesVector[i]->pos.y, FOW_TILE / TILE_PARTITIONS, FOW_TILE / TILE_PARTITIONS }, 0, 0, 0, fowSmallerTilesVector[i]->alpha);
 	}
 }

@@ -7,16 +7,13 @@
 #include <list>
 
 // defines 1
-#define ORIGINAL_TILE App->map->getTileSize()
-#define FOW_TILE_MULTIPLIER 1
-#define FOW_TILE (ORIGINAL_TILE * FOW_TILE_MULTIPLIER)
+#define ORIGINAL_TILE App->map->getTileSize()				// TILES FROM MAP
+#define FOW_TILE_MULTIPLIER 1								// MULTIPLIER (FOW TILES CAN BE BIGGER)
+#define FOW_TILE (ORIGINAL_TILE * FOW_TILE_MULTIPLIER)		// FOW OF WAR TILES
+#define TILE_PARTITIONS 4									// PARTITIONS FOR ART OPTIMIZATION
 
-// defines 2
-#define RADIUS 4
-#define TRANSLUCID_ALPHA 125
-
-// defines ArtProblem
-#define TILE_PARTITIONS 4
+#define RADIUS 4											// FOW TRANSPARENT RADIUS FROM PLAYER
+#define TRANSLUCID_ALPHA 125								// WHEN A FOW TILES HAVE BEEN DISCOVERED BUT IS NOT SEEN
 
 struct FoW_Tile
 {
@@ -55,15 +52,13 @@ public:
 	// Not resolved here !! is an entity problem
 	// Entity.h & .cpp
 
-	// Art Problem
+	// Problem 5  :Art Problem
 	void ArtPartition();
 	int TotalDistanceToPlayerSmallers(iPoint pos);
-	std::vector<FoW_Tile*> temporalSmallerTiles;
-
 
 public:
 	std::vector<FoW_Tile*> fowTilesVector;
-	bool printFoW = true;
+	std::vector<FoW_Tile*> fowSmallerTilesVector;
 };
 
 #endif
