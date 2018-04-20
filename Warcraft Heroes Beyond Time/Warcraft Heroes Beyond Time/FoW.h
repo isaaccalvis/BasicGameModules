@@ -57,10 +57,8 @@ public:
 
 	// Art Problem
 	void ArtPartition();
-	//int TotalDistanceToPlayerSmallers(std::list<FoW_Tile*>::iterator temp);
-	int TotalDistanceToPlayerSmallers(iPoint pos);
+	int TotalDistanceToPlayerSmallers(std::list<FoW_Tile*>::iterator temp);
 	std::list<FoW_Tile*> temporalSmallerTiles;
-	FoW_Tile temporalSmallerTilesStatic[RADIUS * 2];
 
 
 public:
