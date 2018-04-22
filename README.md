@@ -10,10 +10,15 @@ download the source code from github (MIT license), and find
 some exercices (TODO's) to know how it works.
 
 GAME CONTROLL =========================================
+
 WASD	-->	move
+
 Commands (clic º to open the console)
+
 	Create FoW	-->	fow_load
+	
 	Destroy FoW	-->	fow_unload
+	
 =======================================================
 
 The code base (basic gameplay, player movement, ... is from
