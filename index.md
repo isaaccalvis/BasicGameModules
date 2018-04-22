@@ -1,5 +1,9 @@
 Isaac Calvis <br> <b> _Research : Fog Of War (FoW)_ <b/> <br/>
 
+[DOWNLOAD RELEASE](https://github.com/isaaccalvis/FogOfWar_Research/releases/download/v1.0/FoW_Release.rar)
+
+[GITHUB PAGE](https://github.com/isaaccalvis/FogOfWar_Research)
+
 ### Index
 
 1. General Information
