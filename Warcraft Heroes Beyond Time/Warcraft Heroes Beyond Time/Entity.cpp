@@ -30,14 +30,14 @@ int Entity::distanceToPlayer()
 
 bool Entity::Draw()
 {
-	// Problem 4
 	bool ret = true;
+	ret = App->printer->PrintSprite(iPoint(pos.x, pos.y), texture, anim->GetCurrentFrame(), 0, ModulePrinter::Pivots::CUSTOM_PIVOT, 0, anim->GetCurrentPivot());
+
 	if (entityBasicType == ENTITY_TYPE::DINAMIC) {
-		if (distanceToPlayer() < RADIUS)
-			ret = App->printer->PrintSprite(iPoint(pos.x, pos.y), texture, anim->GetCurrentFrame(), 0, ModulePrinter::Pivots::CUSTOM_PIVOT, 0, anim->GetCurrentPivot());
+		// TODO 4: DON'T PRINT UNITS IF THEY ARE OUT OF FOW RANGE. Use : RADIUS (fow radius), distanceToPlayer() to distance
+		// USE spawn_archer TO SPAWN AN ENEMY ARCHER
+
 	}
-	else
-		ret = App->printer->PrintSprite(iPoint(pos.x, pos.y), texture, anim->GetCurrentFrame(), 0, ModulePrinter::Pivots::CUSTOM_PIVOT, 0, anim->GetCurrentPivot());
 	return ret;
 }
 

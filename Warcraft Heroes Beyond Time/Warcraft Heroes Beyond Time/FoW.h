@@ -34,25 +34,15 @@ public:
 	bool PostUpdate();
 	bool CleanUp();
 	void AddCommands();
-
-	// Utilities
 	void print();
 
-	// Problem 1
+	// Part 1
 	void loadFoWMap(int mapWidth, int mapHeight);
 	void unloadFowMap();
-
-	// Problem 2
 	void TilesNearPlayer();
-
-	// Problem 3
 	int TotalDistanceToPlayer(int tile);
 
-	// Problem 4
-	// Not resolved here !! is an entity problem
-	// Entity.h & .cpp
-
-	// Problem 5  :Art Problem
+	// Part 2 (beauty)
 	void SmallerTilesNearPlayer();
 	int TotalDistanceToPlayerSmallers(iPoint pos);
 
