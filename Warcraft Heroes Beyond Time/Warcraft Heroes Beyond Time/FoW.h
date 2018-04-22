@@ -29,7 +29,7 @@ public:
 	FoW();
 	~FoW();
 
-	bool Awake();
+	bool Start();
 	bool Update(float dt);
 	bool PostUpdate();
 	bool CleanUp();

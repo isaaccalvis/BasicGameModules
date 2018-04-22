@@ -38,9 +38,11 @@ FoW::~FoW()
 
 }
 
-bool FoW::Awake()
+bool FoW::Start()
 {
-
+	uint w, h;
+	App->map->getSize(w, h);
+	App->fow->loadFoWMap((int)w, (int)h);
 	return true;
 }
 

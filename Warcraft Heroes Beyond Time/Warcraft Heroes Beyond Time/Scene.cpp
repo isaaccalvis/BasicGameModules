@@ -58,7 +58,32 @@ bool Scene::Start()
 	{
 		case Stages::MAIN_MENU:
 		{
-			CreateMainMenuScreen();
+			App->colliders->Activate();
+			App->entities->Activate();
+			App->console->Activate();
+			App->map->Activate();
+
+
+
+			BROFILER_CATEGORY("InGame Generation", Profiler::Color::Chocolate);
+			MapData mapInfo;
+			mapInfo.sizeX = 50;
+			mapInfo.sizeY = 50;
+			mapInfo.iterations = 600;
+			mapInfo.tilesetPath = "maps/Tiles.png";
+			lvlIndex++;
+
+			App->map->GenerateMap(mapInfo);
+
+			player = App->entities->AddPlayer({ 25 * 48,25 * 48 }, THRALL);
+			App->gui->CreateHPBar(player, { 10,5 });
+
+			App->path->LoadPathMap();
+
+			iPoint chestPos = App->map->GetRandomValidPoint();
+			lvlChest = App->entities->AddChest({ (float)chestPos.x * 48,(float)chestPos.y * 48 }, MID_CHEST);
+			portal = (PortalEntity*)App->entities->AddStaticEntity({ 25 * 48,25 * 48 }, PORTAL);
+
 
 			break;
 		}
