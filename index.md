@@ -176,6 +176,57 @@ Isaac Calvis <br> <b> _Research : Fog Of War (FoW)_ <b/> <br/>
 
 ![tallp4](https://user-images.githubusercontent.com/25582479/38622432-7439b40a-3da3-11e8-8ea5-f01cc5ba9b08.JPG)
 
+TODO 1
+
+	for (int x = 0; x < mapWidth / FOW_TILE_MULTIPLIER; x++)
+		for (int y = 0; y < mapHeight / FOW_TILE_MULTIPLIER; y++)
+		{
+			FoW_Tile* aux = new FoW_Tile;
+			aux->pos = iPoint(x, y);
+			fowTilesVector.push_back(aux);
+		}
+
+TODO 2
+
+	return sqrt(totalX * totalX + totalY * totalY);
+
+TODO 3
+
+      if (TotalDistanceToPlayer(i) < RADIUS)
+            {
+               fowTilesVector[i]->alpha = 0;
+               fowTilesVector[i]->normalAlpha = TRANSLUCID_ALPHA;
+            }
+            else
+               fowTilesVector[i]->alpha = fowTilesVector[i]->normalAlpha;
+
+TODO 4
+
+         if (distanceToPlayer() < RADIUS)
+               ret = App->printer->PrintSprite(iPoint(pos.x, pos.y), texture, anim->GetCurrentFrame(), 0, ModulePrinter::Pivots::CUSTOM_PIVOT, 0, anim->GetCurrentPivot());
+         }
+         else
+            ret = App->printer->PrintSprite(iPoint(pos.x, pos.y), texture, anim->GetCurrentFrame(), 0, ModulePrinter::Pivots::CUSTOM_PIVOT, 0, anim->GetCurrentPivot());
+
+
+TODO 5
+
+      fowSmallerTilesVector[contador]->pos.x = fowTilesVector[i]->pos.x * FOW_TILE + (x * FOW_TILE / TILE_PARTITIONS);
+      fowSmallerTilesVector[contador]->pos.y = fowTilesVector[i]->pos.y * FOW_TILE + (j * FOW_TILE / TILE_PARTITIONS);
+      fowSmallerTilesVector[contador]->normalAlpha = fowTilesVector[i]->normalAlpha;
+	
+
+TODO 6
+
+      int totalX = pos.x + (FOW_TILE / TILE_PARTITIONS / 2) - playerPos.x;
+      if (totalX < 0)
+         totalX *= -1;
+      int totalY = pos.y + (FOW_TILE / TILE_PARTITIONS / 2) - playerPos.y;
+      if (totalY < 0)
+         totalY *= -1;
+      return sqrt(totalX * totalX + totalY * totalY);
+
+
 References:
 --------------------------------------------------------------------------------------------------------------------
 Link to Wikipedia with information and description about the real FoW:
