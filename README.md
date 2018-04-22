@@ -7,3 +7,8 @@ to your videogame. Is made with C++ & SDL.
 You will find a Release where you can see how it works, and can
 download the source code from github (MIT license), and find 
 some exercices (TODO's) to know how it works.
+
+The code base (basic gameplay, player movement, ... is from
+Soft Cactus Team (where i'm member), from game 
+Warcraft: Heroes Beyond Time, here the link to github
+https://github.com/SoftCactusTeam/Warcraft-Heroes-Beyond-Time )
