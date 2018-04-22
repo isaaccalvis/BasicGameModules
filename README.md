@@ -1,5 +1,6 @@
 Research: Fog Of War
 Isaac Calvis
+GitHub: https://github.com/isaaccalvis/FogOfWar_Research
 
 This is a Research about how to do and implement FoW (Fow of War)
 to your videogame. Is made with C++ & SDL.
