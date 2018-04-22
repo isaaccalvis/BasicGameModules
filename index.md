@@ -180,6 +180,8 @@ Isaac Calvis <br> <b> _Research : Fog Of War (FoW)_ <b/> <br/>
 
 ![tallp4](https://user-images.githubusercontent.com/25582479/38622432-7439b40a-3da3-11e8-8ea5-f01cc5ba9b08.JPG)
 
+### TODO's
+
 TODO 1
 
 	for (int x = 0; x < mapWidth / FOW_TILE_MULTIPLIER; x++)
