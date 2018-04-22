@@ -43,7 +43,7 @@ public:
 	void unloadFowMap();
 
 	// Problem 2
-	void TilesNearPlayer(int radius);
+	void TilesNearPlayer();
 
 	// Problem 3
 	int TotalDistanceToPlayer(int tile);
@@ -53,7 +53,7 @@ public:
 	// Entity.h & .cpp
 
 	// Problem 5  :Art Problem
-	void ArtPartition();
+	void SmallerTilesNearPlayer();
 	int TotalDistanceToPlayerSmallers(iPoint pos);
 
 public:

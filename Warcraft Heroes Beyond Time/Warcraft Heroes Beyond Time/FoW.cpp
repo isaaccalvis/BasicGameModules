@@ -46,14 +46,14 @@ bool FoW::Awake()
 
 bool FoW::Update(float dt)
 {
-	TilesNearPlayer(RADIUS);
+	TilesNearPlayer();
 	return true;
 }
 
 bool FoW::PostUpdate()
 {
 	print();
-	ArtPartition();
+	SmallerTilesNearPlayer();
 	return true;
 }
 
@@ -77,9 +77,11 @@ void FoW::print()
 	}
 }
 
+// =================================== PART 1 ===================================
+
 void FoW::loadFoWMap(int mapWidth, int mapHeight)
 {
-	// TODO 1: WE HAVE TO COVER THE MAP WITH FOW TILES
+	// TODO 1: WE HAVE TO COVER THE MAP WITH FOW TILES (Use: 2 'for', mapWith & mapHeight to know the limit & FOW_TILE_MULTIPLIER)
 	for (int x = 0; x < mapWidth / FOW_TILE_MULTIPLIER; x++)
 		for (int y = 0; y < mapHeight / FOW_TILE_MULTIPLIER; y++)
 		{
@@ -108,21 +110,24 @@ int FoW::TotalDistanceToPlayer(int tile)
 	int totalY = (fowTilesVector[tile]->pos.y * FOW_TILE + (FOW_TILE / 2)) / FOW_TILE - (int)App->scene->player->pos.y / FOW_TILE;
 	if (totalY < 0)
 		totalY *= -1;
+	// TODO 2 : CALCULATE DISTANCE (use functions as sqrt)
 	return sqrt(totalX * totalX + totalY * totalY);
 }
 
-void FoW::TilesNearPlayer(int radius)
+void FoW::TilesNearPlayer()
 {
 	int contador = 0;
 	for (int i = 0; i < fowTilesVector.size(); i++)
 	{
-		if (TotalDistanceToPlayer(i) == radius)
+		// TODO 4 (BONUS CODE)
+		if (TotalDistanceToPlayer(i) == RADIUS)
 		{
 			for (int x = 0; x < TILE_PARTITIONS; x++)
 				for (int j = 0; j < TILE_PARTITIONS; j++)
 				{
 					if (contador < fowSmallerTilesVector.size())
 					{
+						//TODO 4 (set the smaller tiles position & normalAlpha, example: "fowSmallerTilesVector[contador]->pos.x = ...;" )
 						fowSmallerTilesVector[contador]->pos.x = fowTilesVector[i]->pos.x * FOW_TILE + (x * FOW_TILE / TILE_PARTITIONS);
 						fowSmallerTilesVector[contador]->pos.y = fowTilesVector[i]->pos.y * FOW_TILE + (j * FOW_TILE / TILE_PARTITIONS);
 						fowSmallerTilesVector[contador]->normalAlpha = fowTilesVector[i]->normalAlpha;
@@ -140,16 +145,19 @@ void FoW::TilesNearPlayer(int radius)
 				}
 			fowTilesVector[i]->alpha = 0;
 		}
-		else if (TotalDistanceToPlayer(i) < radius)
+		else if (TotalDistanceToPlayer(i) < RADIUS)
 		{
+			// TODO 3.1 (set normalAlpha a value to the translucent Tiles, remember to use TRANSLUCID_ALPHA)
 			fowTilesVector[i]->alpha = 0;
 			fowTilesVector[i]->normalAlpha = TRANSLUCID_ALPHA;
 		}
 		else
-			// Problem 3
+			// TODO 3.2 (fowTilesVector[i]->alpha = 255 it's wrong, change it to add to discovered Tile less opacity)
 			fowTilesVector[i]->alpha = fowTilesVector[i]->normalAlpha;
 	}
 }
+
+// =================================== PART 2 ===================================
 
 int FoW::TotalDistanceToPlayerSmallers(iPoint pos)
 {
@@ -162,7 +170,7 @@ int FoW::TotalDistanceToPlayerSmallers(iPoint pos)
 	return sqrt(totalX * totalX + totalY * totalY);
 }
 
-void FoW::ArtPartition()
+void FoW::SmallerTilesNearPlayer()
 {
 	for (int i = 0; i < fowSmallerTilesVector.size(); i++)
 	{
