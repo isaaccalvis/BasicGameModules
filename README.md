@@ -1,5 +1,7 @@
 Research: Fog Of War
+
 Isaac Calvis
+
 GitHub: https://github.com/isaaccalvis/FogOfWar_Research
 
 This is a Research about how to do and implement FoW (Fow of War)
@@ -24,4 +26,5 @@ Commands (clic º to open the console)
 The code base (basic gameplay, player movement, ... is from
 Soft Cactus Team (where i'm member), from game 
 Warcraft: Heroes Beyond Time, here the link to github
+
 https://github.com/SoftCactusTeam/Warcraft-Heroes-Beyond-Time )
