@@ -1,1 +1,5 @@
 theme: jekyll-theme-slate
+
+title: [Fog Of War Research]
+description: [How to make a FoW for VideoGames]
+show_downloads: ["true"]
