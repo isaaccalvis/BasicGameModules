@@ -1,4 +1,6 @@
 Isaac Calvis <br> <b> _Research : Fog Of War (FoW)_ <b/> <br/>
+index from mian
+
 
 ### Index
 
