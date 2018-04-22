@@ -2,6 +2,8 @@ Isaac Calvis <br> <b> _Research : Fog Of War (FoW)_ <b/> <br/>
 
 ### Index
 
+index from docs
+
 1. General Information
     * What’s FoW.
     * How it works.
